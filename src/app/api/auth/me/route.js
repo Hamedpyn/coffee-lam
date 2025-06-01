@@ -3,6 +3,7 @@ import BanModel from "@/models/Ban";
 import UserModel from "@/models/User";
 import { verifyToken } from "@/utils/auth";
 import { v2 as cloudinary } from 'cloudinary';
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 
@@ -13,7 +14,7 @@ export async function GET() {
     const token = cookieStorage.get('token')?.value;
 
     if (!token) {
-      return NextResponse.json({ user: null }, { status: 200 });
+      return NextResponse.json({ user: null }, { status: 404 });
     }
 
     const { data: email } = verifyToken(token);
@@ -24,12 +25,12 @@ export async function GET() {
     );
 
     if (!userDetails) {
-      return NextResponse.json({ user: null }, { status: 200 });
+      return NextResponse.json({ user: null }, { status: 404 });
     }
     return NextResponse.json({ user: userDetails });
   } catch (err) {
     console.error("Error ->", err);
-    return NextResponse.json({ user: null }, { status: 200 });
+    return NextResponse.json({ user: null }, { status: 500 });
   }
 }
 
