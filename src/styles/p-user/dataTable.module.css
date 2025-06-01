@@ -1,0 +1,138 @@
+.title {
+  margin-top: 30px;
+  text-align: right;
+  text-transform: uppercase;
+  position: relative;
+  font-size: 30px;
+  z-index: 1;
+  font-weight: 500;
+}
+
+.title:before {
+  content: "";
+  position: absolute;
+  top: 52%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 95%;
+  z-index: -1;
+}
+
+.title span {
+  background: #fff;
+  padding: 0 15px;
+  margin-right: 4rem;
+}
+
+.title:after {
+  border-bottom: 1px solid #711d1c;
+  box-shadow: 0 1px 0 0 #711d1c;
+  content: "";
+  margin: 0 auto;
+  position: absolute;
+  top: 51%;
+  left: 0;
+  right: 0;
+  width: 95%;
+  z-index: -1;
+}
+
+.table_container {
+  padding: 40px 25px;
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  background-color: #f2f7fd;
+  border-collapse: collapse;
+  border: 1px solid #ccc;
+}
+
+.table th,
+.table td {
+  padding: 8px 22px;
+  text-align: center;
+  white-space: nowrap;
+  border: 1px solid #ccc;
+}
+
+.table th {
+  background-color: #e9eff5;
+  color: #000000;
+  font-weight: bold;
+}
+
+.table tbody tr {
+  background-color: rgb(255, 255, 255);
+  transition: background 0.3s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #f1f1f1;
+}
+
+.btn,
+.check,
+.no_check {
+  font-size: 13px;
+  padding: 0.4rem 0.7rem;
+  border: 0;
+  border-radius: 3px;
+  color: white;
+  width: -webkit-fill-available;
+  cursor: pointer;
+  background: #000;
+}
+
+.no_check {
+  background: #711d1c;
+}
+
+.stars {
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+}
+
+.empty {
+  color: white;
+  background-color: #711d1c;
+  padding: 0.7rem 2rem;
+  width: max-content;
+  margin: 15rem auto;
+  font-size: 1.7rem;
+  border-radius: 5px;
+}
+
+@media screen and (max-width: 768px) {
+  .title {
+    font-size: 22px;
+  }
+
+  .title span {
+    margin-right: 2rem;
+    padding: 0 10px;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px 10px;
+    font-size: 13px;
+    border: 1px solid #bbb;
+  }
+
+  .btn,
+  .check,
+  .no_check {
+    font-size: 12px;
+    padding: 0.3rem 0.5rem;
+  }
+
+  .empty {
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    margin: 10rem auto;
+  }
+}

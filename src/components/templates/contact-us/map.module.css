@@ -1,0 +1,65 @@
+.map {
+  border-radius: 10px;
+  height: 300px;
+  width: 100%;
+}
+
+.details {
+  margin: -73px 50px 0px 50px;
+  padding: 7px 20px 15px 7px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  z-index: 9999;
+  position: relative;
+  box-sizing: border-box;
+}
+
+.details h3 {
+  margin-top: 0.5rem;
+}
+
+.details span {
+  color: gray;
+  font-size: 14px;
+}
+
+.details p {
+  margin-top: 0.7rem;
+  margin-bottom: 0.3rem;
+  color: rgb(63, 61, 61);
+}
+
+.details a {
+  text-decoration: underline;
+  margin-top: 0.5rem;
+  font-size: 15px;
+}
+
+/* Tablet screens */
+@media (max-width: 1024px) {
+  .details {
+    margin: -60px 30px 0 30px;
+    padding: 10px 15px;
+  }
+}
+
+/* Mobile screens */
+@media (max-width: 600px) {
+  .details {
+    margin: -40px 15px 0 15px;
+    padding: 10px 12px;
+  }
+
+  .details span,
+  .details a {
+    font-size: 13px;
+  }
+
+  .details p {
+    font-size: 14px;
+  }
+
+  .details h3 {
+    font-size: 16px;
+  }
+}

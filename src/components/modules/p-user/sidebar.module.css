@@ -1,0 +1,118 @@
+.sidebar_main {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 30px 10px;
+}
+
+.sidebar_link_active {
+  color: #711D1C !important;
+  font-weight: bold;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  border-radius: 5px;
+}
+
+
+.sidebar_main a {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 18px;
+  opacity: 0.7;
+  color: white;
+  padding: 10px 15px;
+}
+
+.sidebar_main a:hover {
+  color: #711D1C !important;
+  font-weight: bold;
+  background-color: white;
+  gap: 8px;
+  border-radius: 5px;
+}
+
+.sidebar_link_active {
+  opacity: 1 !important;
+}
+
+.logout {
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 30px;
+  flex-direction: row-reverse;
+  align-items: center;
+  cursor: pointer;
+  max-width: 0 auto;
+  width: 90%;
+  padding-top: 9px;
+  padding-right: 10px !important;
+  margin-right: 10px !important;
+  font-size: 1.3rem;
+  border-top: 2px solid white;
+  color: white;
+}
+
+.profile {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-direction: row-reverse;
+}
+
+.profile img {
+  width: 50px;
+  border-radius: 100%;
+}
+
+.profile span {
+  font-size: 14px;
+  color: rgb(144, 131, 131);
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  /* .sidebar {
+    position: fixed;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    transform: translateX(100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 1000;
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  } */
+
+  /* .sidebar_toggle {
+    display: block;
+  } */
+}
+
+/* Backdrop overlay */
+.sidebar_backdrop {
+  display: none;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0);
+  pointer-events: none;
+  transition: background-color 0.3s ease;
+  z-index: 999;
+}
+
+.sidebar_backdrop.active {
+  display: block;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: auto;
+}
+
+/* Ensure sidebar is above the backdrop */
+.sidebar {
+  z-index: 1000 !important;
+}

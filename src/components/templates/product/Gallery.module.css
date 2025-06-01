@@ -1,0 +1,24 @@
+.gallery_container {
+  width: 36%;
+}
+
+.slide_wrapper {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Square image wrapper */
+}
+
+@media (max-width: 768px) {
+  .gallery_container {
+    width: 100%;
+    padding: 0 1rem;
+  }
+
+  .gallery-slider {
+    margin-top: 1rem;
+  }
+
+  .slide_wrapper {
+    aspect-ratio: 1 / 1; /* Keeps square ratio on mobile */
+  }
+}

@@ -1,0 +1,33 @@
+.comments {
+  display: flex;
+  gap: 50px;
+  padding: 1rem;
+
+}
+
+
+.comments span {
+  margin-right: 0.3rem;
+}
+.user_comments {
+  width: 50%;
+}
+.user_comments p,
+.form_bg {
+  text-align: justify;
+}
+
+.form_bg {
+  width: 50%;
+}
+@media (max-width: 768px) {
+  .comments {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .user_comments,
+  .form_bg {
+    width: 100%;
+  }
+}

@@ -1,0 +1,99 @@
+.stepper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row-reverse;
+  gap: 18px;
+  padding-bottom: 3.8rem;
+  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  text-align: center;
+}
+
+.active_step {
+  opacity: 1 !important;
+}
+
+.stepper_bg {
+  background-image: url(https://set-coffee.com/wp-content/uploads/2022/06/back1.jpg);
+  background-size: cover;
+  background-position: center center;
+  margin-bottom: 40px;
+  padding: 0 60px;
+  padding-top: 182px;
+}
+
+.stepper p,
+.stepper a {
+  display: inline-block;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  font-size: 22px;
+  line-height: 1.2;
+  opacity: 0.7;
+}
+
+.stepper svg {
+  font-size: 1.2rem;
+  opacity: 0.7;
+}
+
+/* ===================== Responsive Breakpoints ===================== */
+
+@media (max-width: 1024px) {
+  .stepper_bg {
+    padding: 0 40px;
+    padding-top: 150px;
+  }
+
+  .stepper p,
+  .stepper a {
+    font-size: 20px;
+  }
+
+  .stepper svg {
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .stepper_bg {
+    padding: 0 30px;
+    padding-top: 120px;
+  }
+
+  .stepper {
+    gap: 12px;
+    padding-bottom: 3rem;
+  }
+
+  .stepper p,
+  .stepper a {
+    font-size: 18px;
+  }
+
+  .stepper svg {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .stepper_bg {
+    padding: 0 20px;
+    padding-top: 100px;
+  }
+
+  .stepper {
+    gap: 10px;
+    padding-bottom: 2rem;
+  }
+
+  .stepper p,
+  .stepper a {
+    font-size: 16px;
+  }
+
+  .stepper svg {
+    font-size: 0.95rem;
+  }
+}
