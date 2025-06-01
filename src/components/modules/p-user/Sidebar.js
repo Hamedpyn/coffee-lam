@@ -23,7 +23,7 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
     const getUser = () => {
       fetch('/api/auth/me')
         .then(res => res.json())
-        .then(result => setMe(result))
+        .then(result => setMe(result.user))
     };
 
     getUser()

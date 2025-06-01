@@ -18,9 +18,9 @@ function AccountDetails() {
     fetch('/api/auth/me')
       .then(res => res.json())
       .then(me => {
-        setName(me.userName);
-        setEmail(me.email);
-        setProfile(me.img);
+        setName(me.user.userName);
+        setEmail(me.user.email);
+        setProfile(me.user.img);
       });
   }, []);
 

@@ -16,7 +16,7 @@ const Topbar = ({ setIsOpen }) => {
   const getUser = useCallback(() => {
     fetch('/api/auth/me')
       .then(res => res.json())
-      .then(result => setMe(result));
+      .then(result => setMe(result.user));
   }, []);
 
   useEffect(() => {
