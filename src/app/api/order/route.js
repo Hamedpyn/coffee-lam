@@ -10,7 +10,10 @@ export async function POST(req) {
     try {
         const user = await authUser();
         const { code, product } = await req.json();
+        if (!user) {
+            return NextResponse.json({ message: "User  not found" }, { status: 404 });
 
+        }
         // Create the order
         await orderModel.create({
             code,

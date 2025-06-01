@@ -120,6 +120,16 @@ const Table = () => {
           localStorage.removeItem("cart");
         }
       });
+    } else if (res.status === 404) {
+      Swal.fire({
+        title: "برای ثبت سفارش وارد حساب خود شوید",
+        icon: "success",
+        confirmButtonText: "فهمیدم",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          router.push('/login-register');
+        }
+      });
     }
 
 
