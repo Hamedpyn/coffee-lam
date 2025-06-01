@@ -12,7 +12,7 @@ export default function NavBarWrapper() {
       return;
     }
     const data = await res.json();
-    setUser(data);
+    setUser(data.user);
   }
 
   useEffect(() => {

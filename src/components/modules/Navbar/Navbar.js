@@ -118,7 +118,7 @@ function Navbar({ isLogin, role, userId }) {
             </Link>
           </li>
 
-          {isLogin == true ? (
+          {isLogin ? (
             <div className={styles.dropdown}>
               <Link
                 href="/p-user"
