@@ -7,6 +7,16 @@ import styles from "@/components/layouts/userPanelLayout.module.css";
 const LayoutClient = ({ children }) => {
   const [isOpen, setIsOpen] = useState(false);
 
+  const getUser = async () => {
+    const res = await fetch("/api/auth/me")
+    const data = await res.json()
+    localStorage.setItem("userIsLoggedIn", JSON.stringify({ userName: data.userName, role: data.role, img: data.img }))
+  };
+
+  useEffect(() => {
+    getUser()
+  }, [])
+
   return (
     <div className={styles.section}>
       <Sidebar isOpen={isOpen} setIsOpen={setIsOpen} />

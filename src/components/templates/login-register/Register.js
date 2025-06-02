@@ -29,14 +29,6 @@ const Register = ({ showLoginForm }) => {
       body: JSON.stringify({ userName, email, password })
     })
     if (res.status === 201) {
-      const { userName, role, img } = await res.json();
-
-      const userIsLoggedIn = {
-        userName,
-        role,
-        img
-      }
-      localStorage.setItem("userIsLoggedIn", JSON.stringify(userIsLoggedIn))
 
       Swal.fire({
         title: "موفق",
