@@ -48,8 +48,8 @@ function AccountDetails() {
       });
 
       if (result.isConfirmed) {
-        const data = await res.json()
-        const updateLocalStorage = localStorage.setItem("userIsLoggedIn", JSON.stringify({ userName, role, img }))
+        const { userName, role, img } = await res.json()
+        localStorage.setItem("userIsLoggedIn", JSON.stringify({ userName, role, img }))
         location.reload()
       }
     }
