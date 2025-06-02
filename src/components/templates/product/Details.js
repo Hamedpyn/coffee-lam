@@ -78,6 +78,7 @@ const Details = ({ product, userId }) => {
     })
 
     localStorage.setItem('cart', JSON.stringify(cart));
+    window.dispatchEvent(new Event("userDetailsChanged"));
   };
 
 

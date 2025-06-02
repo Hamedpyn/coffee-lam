@@ -20,9 +20,22 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   const [me, setMe] = useState({});
 
   useEffect(() => {
-    const userDetails = JSON.parse(localStorage.getItem("userIsLoggedIn"))
-    setMe(userDetails)
-  }, [])
+    const updateUser = () => {
+      const userDetails = JSON.parse(localStorage.getItem("userIsLoggedIn"));
+      setMe(userDetails);
+    };
+
+    updateUser(); 
+
+    window.addEventListener("storage", updateUser); // Other tabs
+    window.addEventListener("userDetailsChanged", updateUser); // Same tab
+
+    return () => {
+      window.removeEventListener("storage", updateUser);
+      window.removeEventListener("userDetailsChanged", updateUser);
+    };
+  }, []);
+
 
 
   useEffect(() => {

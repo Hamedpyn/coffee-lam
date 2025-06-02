@@ -12,9 +12,21 @@ const Topbar = ({ setIsOpen }) => {
   const [me, setUserDetails] = useState(null);
 
   useEffect(() => {
-    const userDetails = JSON.parse(localStorage.getItem("userIsLoggedIn"))
-    setUserDetails(userDetails)
-  }, [])
+    const updateUser = () => {
+      const userDetails = JSON.parse(localStorage.getItem("userIsLoggedIn"));
+      setUserDetails(userDetails);
+    };
+
+    updateUser(); 
+
+    window.addEventListener("storage", updateUser); // Other tabs
+    window.addEventListener("userDetailsChanged", updateUser); // Same tab
+
+    return () => {
+      window.removeEventListener("storage", updateUser);
+      window.removeEventListener("userDetailsChanged", updateUser);
+    };
+  }, []);
 
 
   const hideModal = () => setShowModal(false);
