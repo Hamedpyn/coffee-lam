@@ -8,30 +8,37 @@
   justify-content: space-between;
   border-bottom: 4px solid #711d1c;
 }
+
 .topbar section {
   display: flex;
   justify-content: space-between;
   gap: 20px;
   align-items: center;
 }
+
 .profile {
   display: flex;
   gap: 10px;
   align-items: center;
   flex-direction: row-reverse;
 }
+
 .profile img {
   width: 50px;
+  height: 50px;
   border-radius: 100px;
-    object-fit: contain;
+  object-fit: cover;
 }
+
 .profile span {
   font-size: 14px;
   color: rgb(144, 131, 131);
 }
+
 .searchBox {
   position: relative;
 }
+
 .searchBox input {
   background: white;
   padding: 10px 10px;
@@ -40,6 +47,7 @@
   cursor: default;
   width: 300px;
 }
+
 .searchBox div {
   background-color: #711d1c;
   color: white;
@@ -53,12 +61,14 @@
   border-radius: 100%;
   padding: 0px 5px;
 }
+
 .searchBox svg,
 .notification svg {
   position: relative;
   bottom: 1px;
   cursor: pointer;
 }
+
 .notification {
   background-color: #711d1c;
   color: white;
@@ -71,6 +81,7 @@
   border-radius: 20%;
   padding: 0px 5px;
 }
+
 .notification span {
   position: absolute;
   top: -6px;
@@ -90,6 +101,7 @@
   align-items: center;
   width: 100%;
 }
+
 .notifications_box button {
   background: blue;
   color: white;
@@ -98,10 +110,12 @@
   border-radius: 4px;
   cursor: pointer;
 }
+
 .notifications_box p,
 .notifications_box svg {
   cursor: pointer;
 }
+
 .sidebar_toggle {
   position: fixed;
   top: 1rem;
@@ -113,6 +127,7 @@
   color: #711d1c;
   cursor: pointer;
 }
+
 .notifications_box {
   background-color: #711d1c;
   width: 300px;
@@ -128,6 +143,7 @@
   left: 50px;
   z-index: 100;
 }
+
 .notifications_overlay {
   background: rgba(0, 0, 0, 0.389);
   position: fixed;
@@ -137,6 +153,7 @@
   right: 0;
   z-index: 99;
 }
+
 .modal_text {
   margin-top: 3rem;
   margin-bottom: 3rem;
