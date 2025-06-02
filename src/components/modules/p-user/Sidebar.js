@@ -7,35 +7,16 @@ import { MdOutlineAttachMoney, MdSms, MdLogout } from "react-icons/md";
 import { TbListDetails } from "react-icons/tb";
 import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Swal from "sweetalert2";
 
-const Sidebar = ({ isOpen, setIsOpen }) => {
+const Sidebar = ({ isOpen, setIsOpen,me }) => {
   const path = usePathname();
   const router = useRouter();
   let wrapperRef = useRef();
   let bodyRef = useRef(null);
   let sideBarRef = useRef(null);
-  const [me, setMe] = useState({});
-
-  useEffect(() => {
-    const updateUser = () => {
-      const userDetails = JSON.parse(localStorage.getItem("userIsLoggedIn"));
-      setMe(userDetails);
-    };
-
-    updateUser(); 
-
-    window.addEventListener("storage", updateUser); // Other tabs
-    window.addEventListener("userDetailsChanged", updateUser); // Same tab
-
-    return () => {
-      window.removeEventListener("storage", updateUser);
-      window.removeEventListener("userDetailsChanged", updateUser);
-    };
-  }, []);
-
 
 
   useEffect(() => {

@@ -54,6 +54,7 @@ function AccountDetails() {
       if (result.isConfirmed) {
         const { userName, role, img } = data;
         localStorage.setItem("userIsLoggedIn", JSON.stringify({ userName, role, img }));
+        window.dispatchEvent(new Event("userDetailsChanged"));
         setIsLoading(false)
         location.reload();
       }

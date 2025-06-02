@@ -4,30 +4,11 @@ import { IoIosSearch, IoIosNotifications } from "react-icons/io";
 import Modal from "./Modal";
 import { HiMenuAlt3 } from "react-icons/hi";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
-const Topbar = ({ setIsOpen }) => {
+const Topbar = ({ setIsOpen,me }) => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [me, setUserDetails] = useState(null);
-
-  useEffect(() => {
-    const updateUser = () => {
-      const userDetails = JSON.parse(localStorage.getItem("userIsLoggedIn"));
-      setUserDetails(userDetails);
-    };
-
-    updateUser(); 
-
-    window.addEventListener("storage", updateUser); // Other tabs
-    window.addEventListener("userDetailsChanged", updateUser); // Same tab
-
-    return () => {
-      window.removeEventListener("storage", updateUser);
-      window.removeEventListener("userDetailsChanged", updateUser);
-    };
-  }, []);
-
 
   const hideModal = () => setShowModal(false);
   return (
