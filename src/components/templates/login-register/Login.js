@@ -41,6 +41,16 @@ const Login = ({ showRegisterForm }) => {
     });
 
     if (res.status === 200) {
+      const { userName, role,img } = await res.json();
+
+      const userIsLoggedIn = {
+        userName,
+        role,
+        img
+      }
+
+      localStorage.setItem("userIsLoggedIn", JSON.stringify(userIsLoggedIn))
+
       Swal.fire({
         title: "موفق",
         text: "عملیات با موفقیت انجام شد",

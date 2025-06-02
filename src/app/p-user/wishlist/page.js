@@ -4,10 +4,14 @@ import Product from "@/components/templates/p-user/wishlist/Product";
 import connectToDB from "@/configs/db";
 import WishListModel from "@/models/WishList";
 import { authUser } from "@/utils/auth";
+import { redirect } from "next/navigation";
 
 const page = async () => {
     await connectToDB();
     const user = await authUser();
+    if (!user) {
+        redirect("/login-register");
+    }
     const wishlist = await WishListModel.find({ user: user._id }).populate("product");
 
     return (

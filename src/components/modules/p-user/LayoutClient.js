@@ -1,5 +1,5 @@
 "use client";
-import React, {  useState } from "react";
+import React, { useState } from "react";
 import Sidebar from "@/components/modules/p-user/Sidebar";
 import TopBar from "@/components/modules/p-user/TopBar";
 import styles from "@/components/layouts/userPanelLayout.module.css";

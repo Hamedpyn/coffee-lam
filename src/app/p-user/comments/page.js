@@ -3,11 +3,14 @@ import Layout from "@/components/layouts/UserPanelLayout";
 import connectToDB from "@/configs/db";
 import { authUser } from "@/utils/auth";
 import commentModel from "@/models/Comment";
-
+import { redirect } from "next/navigation";
+import styles from "@/styles/p-user/wishlist.module.css"
 const page = async () => {
   connectToDB();
   const user = await authUser();
-
+  if (!user) {
+    redirect("/login-register");
+  }
   const comments = await commentModel.find({ user: String(user?._id) }, "-__v").populate("productID", "name");
 
 

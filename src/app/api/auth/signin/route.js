@@ -46,7 +46,7 @@ export async function POST(req) {
             return Response.json({ message: "An unexpected error has occurred" }, { status: 500 });
         }
 
-        await UserModel.findOneAndUpdate(
+        const userDetails = await UserModel.findOneAndUpdate(
             { email: DoesUserExist.email },
             {
                 $set: {
@@ -63,7 +63,7 @@ export async function POST(req) {
         );
 
         return Response.json(
-            { message: "User logged in successfully :))" },
+            userDetails,
             {
                 status: 200,
                 headers,

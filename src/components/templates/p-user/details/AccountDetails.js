@@ -7,8 +7,6 @@ import Swal from "sweetalert2";
 import Image from "next/image";
 
 function AccountDetails() {
-
-
   const [userName, setName] = useState("");
   const [email, setEmail] = useState("");
   const [profile, setProfile] = useState("");

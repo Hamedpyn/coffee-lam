@@ -1,27 +1,20 @@
-"use client";
-
-import { useCallback, useEffect, useState } from "react";
+"use client"
 import styles from "./topbar.module.css";
 import { IoIosSearch, IoIosNotifications } from "react-icons/io";
 import Modal from "./Modal";
 import { HiMenuAlt3 } from "react-icons/hi";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 const Topbar = ({ setIsOpen }) => {
   const [showNotifications, setShowNotifications] = useState(false);
   const [showModal, setShowModal] = useState(false);
-  const [me, setMe] = useState('')
-
-
-  const getUser = useCallback(() => {
-    fetch('/api/auth/me')
-      .then(res => res.json())
-      .then(result => setMe(result.user));
-  }, []);
+  const [me, setUserDetails] = useState(null);
 
   useEffect(() => {
-    getUser();
-  }, [getUser]);
+    const userDetails = JSON.parse(localStorage.getItem("userIsLoggedIn"))
+    setUserDetails(userDetails)
+  }, [])
 
 
   const hideModal = () => setShowModal(false);
@@ -30,10 +23,10 @@ const Topbar = ({ setIsOpen }) => {
       <div className={styles.topbar}>
         <div className={`!hidden lg:!flex ${styles.profile}`}>
           <div>
-            <p>{me.userName}</p>
-            <span>{me.role === "USER" ? "کاربر" : "مدیر"}</span>
+            <p>{me?.userName}</p>
+            <span>{me?.role === "USER" ? "کاربر" : "مدیر"}</span>
           </div>
-          {!me.img ? <Image width={50} height={30} src={"/images/unknown-person-icon-4.png"} alt="" /> : <Image width={50} height={30} src={me.img} alt="" />}
+          {!me?.img ? <Image width={50} height={30} src={"/images/unknown-person-icon-4.png"} alt="" /> : <Image width={50} height={30} src={me.img} alt="" />}
         </div>
 
         <section className="flex lg:inline-block lg:w-auto w-full justify-between items-center">

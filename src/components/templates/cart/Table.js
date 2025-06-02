@@ -44,7 +44,8 @@ const Table = () => {
     if (localCart) setCart(localCart);
   }, []);
 
-  useEffect(() => {;
+  useEffect(() => {
+    ;
     let price = 0;
     if (cart.length) {
       price = cart.reduce((prev, current) => prev + current.price * current.count, 0);
@@ -131,8 +132,6 @@ const Table = () => {
         }
       });
     }
-
-
   };
 
   const deleteFromBasket = (itemID) => {

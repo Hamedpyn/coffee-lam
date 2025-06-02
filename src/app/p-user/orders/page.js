@@ -4,14 +4,17 @@ import { authUser } from "@/utils/auth";
 import orderModel from "@/models/Order";
 import styles from "@/styles/p-user/wishlist.module.css";
 import Product from "@/components/templates/p-user/wishlist/Product";
+import { redirect } from "next/navigation";
 
 const page = async () => {
     connectToDB();
     const user = await authUser();
-
+    if (!user) {
+        redirect("/login-register");
+    }
     const rawOrders = await orderModel.find({ user: String(user?._id) }, "-__v").populate("product.id").lean()
     const orders = JSON.parse(JSON.stringify(rawOrders))
-    
+
     return (
         <Layout>
             <main>

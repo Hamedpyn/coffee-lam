@@ -59,7 +59,7 @@ export async function POST(req) {
             );
 
             return Response.json(
-                { message: "User signed in in successfully :))" },
+                createUser,
                 {
                     status: 201,
                     headers,

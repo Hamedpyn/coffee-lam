@@ -17,16 +17,11 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
   let wrapperRef = useRef();
   let bodyRef = useRef(null);
   let sideBarRef = useRef(null);
-  const [me, setMe] = useState('');
+  const [me, setMe] = useState({});
 
   useEffect(() => {
-    const getUser = () => {
-      fetch('/api/auth/me')
-        .then(res => res.json())
-        .then(result => setMe(result.user))
-    };
-
-    getUser()
+    const userDetails = JSON.parse(localStorage.getItem("userIsLoggedIn"))
+    setMe(userDetails)
   }, [])
 
 
@@ -86,10 +81,10 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       >
         <div className={`!flex justify-end !border-b !border-white !p-2.5 lg:!hidden ${styles.profile}`}>
           <div>
-            <p className="text-white">{me.userName}</p>
-            <span>{me.role === "USER" ? "کاربر" : "مدیر"}</span>
+            <p className="text-white">{me?.userName}</p>
+            <span>{me?.role === "USER" ? "کاربر" : "مدیر"}</span>
           </div>
-          {!me.img ? <Image width={50} height={30} src={"/images/unknown-person-icon-4.png"} alt="" /> : <Image width={50} height={30} src={me.img} alt="" />}
+          {!me?.img ? <Image width={50} height={30} src={"/images/unknown-person-icon-4.png"} alt="" /> : <Image width={50} height={30} src={me.img} alt="" />}
         </div>
 
         <ul className={styles.sidebar_main} onClick={closeSidebar}>

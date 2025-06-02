@@ -69,9 +69,13 @@ const Details = ({ product, userId }) => {
     Swal.fire({
       title: "موفق",
       text: "عملیات با موفقیت انجام شد",
-      icon: "success"
+      icon: "success",
+      confirmButtonText: "فهمیدم"
+    }).then(result => {
+      if (result.isConfirmed) {
+        router.push("/cart")
+      }
     })
-    router.push("/cart")
 
     localStorage.setItem('cart', JSON.stringify(cart));
   };
