@@ -30,32 +30,33 @@ function AccountDetails() {
   const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const isFormValid = isValidName(userName) && isValidEmail(email);
 
-  const updateUser = async () => {
-    const formData = new FormData();
-    formData.append("userName", userName);
-    formData.append("email", email);
-    formData.append("img", img);
+const updateUser = async () => {
+  const formData = new FormData();
+  formData.append("userName", userName);
+  formData.append("email", email);
+  formData.append("img", img);
 
-    const res = await fetch("/api/auth/me", {
-      method: "PUT",
-      body: formData,
+  const res = await fetch("/api/auth/me", {
+    method: "PUT",
+    body: formData,
+  });
+
+  if (res.ok) {
+    const data = await res.json();
+
+    const result = await Swal.fire({
+      title: "عملیات با موفقیت انجام شد",
+      icon: "success",
+      confirmButtonText: "اوکی",
     });
-    if (res.ok) {
-      const result = await Swal.fire({
-        title: "عملیات با موفقیت انجام شد",
-        icon: "success",
-        confirmButtonText: "اوکی",
-      });
 
-      if (result.isConfirmed) {
-        const { userName, role, img } = await res.json()
-        localStorage.setItem("userIsLoggedIn", JSON.stringify({ userName, role, img }))
-        location.reload()
-      }
+    if (result.isConfirmed) {
+      const { userName, role, img } = data;
+      localStorage.setItem("userIsLoggedIn", JSON.stringify({ userName, role, img }));
+      location.reload();
     }
-
-
-  };
+  }
+};
 
   return (
     <main>
