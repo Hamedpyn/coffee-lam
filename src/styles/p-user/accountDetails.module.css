@@ -234,8 +234,8 @@
 }
 
 .submit_btn:disabled {
-  opacity: 0.5;
-  cursor: none;
+  opacity: 0.5 Im !important;
+  cursor: not-allowed Im !important;
 }
 
 /* === RESPONSIVE === */
