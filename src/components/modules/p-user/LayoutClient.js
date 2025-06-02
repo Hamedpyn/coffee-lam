@@ -10,7 +10,13 @@ const LayoutClient = ({ children }) => {
   const getUser = async () => {
     const res = await fetch("/api/auth/me")
     const data = await res.json()
-    localStorage.setItem("userIsLoggedIn", JSON.stringify({ userName: data.userName, role: data.role, img: data.img }))
+
+    const userIsLoggedIn = {
+      userName: data.user.userName,
+      role: data.user.role,
+      img: data.user.img
+    }
+    localStorage.setItem("userIsLoggedIn", JSON.stringify(userIsLoggedIn))
   };
 
   useEffect(() => {
