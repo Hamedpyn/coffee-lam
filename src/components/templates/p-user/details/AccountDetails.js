@@ -48,6 +48,8 @@ function AccountDetails() {
       });
 
       if (result.isConfirmed) {
+        const data = await res.json()
+        const updateLocalStorage = localStorage.setItem("userIsLoggedIn", JSON.stringify({ userName, role, img }))
         location.reload()
       }
     }

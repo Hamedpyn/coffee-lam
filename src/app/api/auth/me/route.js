@@ -3,6 +3,7 @@ import BanModel from "@/models/Ban";
 import UserModel from "@/models/User";
 import { verifyToken } from "@/utils/auth";
 import { v2 as cloudinary } from 'cloudinary';
+import { revalidatePath } from "next/cache";
 import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
@@ -89,12 +90,13 @@ export async function PUT(req) {
       updateFields.img = imageUrl;
     }
 
-    await UserModel.findOneAndUpdate(
+    const user = await UserModel.findOneAndUpdate(
       { email: data },
       updateFields
     );
 
-    return Response.json({ message: "User details updated successfully" }, { status: 200 });
+    revalidatePath("/p-user/account-details")
+    return Response.json(user, { status: 200 });
 
   } catch (err) {
     console.error("Error ->", err);
