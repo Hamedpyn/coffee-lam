@@ -11,6 +11,7 @@ function AccountDetails() {
   const [email, setEmail] = useState("");
   const [profile, setProfile] = useState("");
   const [img, setImg] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
   const getUser = useCallback(() => {
     fetch('/api/auth/me')
@@ -30,33 +31,34 @@ function AccountDetails() {
   const isValidEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
   const isFormValid = isValidName(userName) && isValidEmail(email);
 
-const updateUser = async () => {
-  const formData = new FormData();
-  formData.append("userName", userName);
-  formData.append("email", email);
-  formData.append("img", img);
-
-  const res = await fetch("/api/auth/me", {
-    method: "PUT",
-    body: formData,
-  });
-
-  if (res.ok) {
-    const data = await res.json();
-
-    const result = await Swal.fire({
-      title: "عملیات با موفقیت انجام شد",
-      icon: "success",
-      confirmButtonText: "اوکی",
+  const updateUser = async () => {
+    const formData = new FormData();
+    formData.append("userName", userName);
+    formData.append("email", email);
+    formData.append("img", img);
+    setIsLoading(true)
+    const res = await fetch("/api/auth/me", {
+      method: "PUT",
+      body: formData,
     });
 
-    if (result.isConfirmed) {
-      const { userName, role, img } = data;
-      localStorage.setItem("userIsLoggedIn", JSON.stringify({ userName, role, img }));
-      location.reload();
+    if (res.ok) {
+      const data = await res.json();
+
+      const result = await Swal.fire({
+        title: "عملیات با موفقیت انجام شد",
+        icon: "success",
+        confirmButtonText: "اوکی",
+      });
+
+      if (result.isConfirmed) {
+        const { userName, role, img } = data;
+        localStorage.setItem("userIsLoggedIn", JSON.stringify({ userName, role, img }));
+        setIsLoading(false)
+        location.reload();
+      }
     }
-  }
-};
+  };
 
   return (
     <main>
@@ -125,7 +127,7 @@ const updateUser = async () => {
         <button
           type="submit"
           onClick={updateUser}
-          disabled={!isFormValid}
+          disabled={isLoading || !isFormValid}
           className={styles.submit_btn}
         >
           ثبت تغییرات
